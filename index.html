@@ -12,35 +12,110 @@
       * { box-sizing: border-box; }
       body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
       main { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 64px 40px; }
-      .identity { display: grid; grid-template-columns: 280px auto; align-items: center; gap: clamp(32px, 5vw, 80px); max-width: 1120px; }
-      .logo { display: block; width: 280px; height: auto; }
+      .identity { display: grid; grid-template-columns: minmax(320px, 440px) auto; align-items: center; gap: clamp(24px, 4vw, 64px); width: min(1180px, 100%); }
+      .brand-scene { position: relative; width: 100%; aspect-ratio: 1; isolation: isolate; perspective: 900px; }
+      .brand-scene::before { content: ""; position: absolute; inset: 8%; border-radius: 50%; background: radial-gradient(circle, #ffca9b80, #ffe9d650 44%, transparent 70%); filter: blur(18px); animation: breathe 9s ease-in-out infinite; }
+      .scene-content { position: absolute; inset: 0; transform: translate3d(var(--x, 0px), var(--y, 0px), 0) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform 700ms cubic-bezier(.2,.7,.2,1); }
+      .orbits { display: block; width: 100%; height: 100%; overflow: visible; }
+      .orbit { transform-origin: 300px 300px; animation: orbit 38s linear infinite; }
+      .orbit.reverse { animation-direction: reverse; animation-duration: 52s; }
+      .orbit.slow { animation-duration: 70s; }
+      .trail { animation: trail 15s linear infinite; }
+      .brand-core { position: absolute; inset: 25%; display: grid; place-items: center; border: 1px solid #f1d9c5; border-radius: 50%; background: #fdf8f4; box-shadow: 0 20px 55px #ad5a2020, 0 3px 9px #a7561410, inset 0 0 0 7px #fffaf6; animation: float 7s ease-in-out infinite; }
+      .logo { display: block; width: 90%; height: auto; border-radius: 50%; }
+      .motion-toggle { position: absolute; bottom: 12px; right: 24px; width: 36px; height: 36px; display: grid; place-items: center; padding: 0; border: 1px solid #e9d7c9; border-radius: 50%; background: #fdf8f4cc; color: #906444; cursor: pointer; }
+      .motion-toggle svg { width: 13px; height: 13px; }
+      .motion-toggle .play { display: none; }
+      .brand-scene[data-paused="true"] .pause { display: none; }
+      .brand-scene[data-paused="true"] .play { display: block; }
+      .brand-scene[data-paused="true"] *, .brand-scene[data-paused="true"]::before { animation-play-state: paused; }
+      .brand-scene[data-paused="true"] .scene-content { transform: none; }
       .wordmark { padding-bottom: 4px; }
-      h1 { margin: 0; font-size: clamp(64px, 7.1vw, 96px); font-weight: 650; line-height: 1.05; letter-spacing: -0.055em; white-space: nowrap; }
+      h1 { margin: 0; font-size: clamp(56px, 6.5vw, 88px); font-weight: 650; line-height: 1.05; letter-spacing: -0.055em; white-space: nowrap; }
       .project-link { display: inline-flex; align-items: center; justify-content: center; gap: 36px; min-height: 60px; margin-top: 36px; padding: 17px 28px; border-radius: 999px; background: #ff7a24; color: #2d2c2a; font-size: 18px; font-weight: 600; line-height: 26px; text-decoration: none; transition: background 160ms ease; }
       .project-link span { font-size: 24px; font-weight: 400; }
       .project-link:hover { background: #f36d18; }
-      .project-link:focus-visible { outline: 3px solid #2d2c2a; outline-offset: 5px; }
-      @media (max-width: 800px) {
+      .project-link:focus-visible, .motion-toggle:focus-visible { outline: 3px solid #2d2c2a; outline-offset: 5px; }
+      @keyframes orbit { to { transform: rotate(360deg); } }
+      @keyframes trail { to { stroke-dashoffset: -200; } }
+      @keyframes float { 50% { translate: 0 -5px; } }
+      @keyframes breathe { 50% { opacity: .55; scale: 1.08; } }
+      @media (max-width: 960px) {
         main { padding: 40px 24px; }
-        .identity { grid-template-columns: 1fr; justify-items: center; gap: 20px; text-align: center; }
-        .logo { width: 200px; }
+        .identity { grid-template-columns: 1fr; justify-items: center; gap: 24px; text-align: center; }
+        .brand-scene { width: min(340px, 100%); }
         h1 { font-size: clamp(40px, 8.5vw, 64px); }
         .project-link { margin-top: 28px; }
       }
       @media (prefers-reduced-motion: reduce) {
-        .project-link { transition: none; }
+        *, *::before { animation: none !important; transition: none !important; }
+        .scene-content { transform: none; }
+        .motion-toggle { display: none; }
       }
     </style>
   </head>
   <body>
     <main>
       <div class="identity">
-        <img class="logo" src="./logo.jpg" width="460" height="460" alt="RecGPT logo">
+        <div class="brand-scene">
+          <div class="scene-content">
+            <svg class="orbits" viewBox="0 0 600 600" fill="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="orbit-line" x1="40" y1="100" x2="550" y2="490" gradientUnits="userSpaceOnUse"><stop stop-color="#f67b2b" stop-opacity=".08"/><stop offset=".5" stop-color="#ee7d36" stop-opacity=".65"/><stop offset="1" stop-color="#f67b2b" stop-opacity=".08"/></linearGradient>
+                <radialGradient id="node-glow"><stop stop-color="#ffb574" stop-opacity=".8"/><stop offset="1" stop-color="#ff9c49" stop-opacity="0"/></radialGradient>
+              </defs>
+              <circle cx="300" cy="300" r="245" stroke="#e7c6ad" stroke-opacity=".35" stroke-dasharray="2 10"/>
+              <circle cx="300" cy="300" r="207" stroke="#edceba" stroke-opacity=".28"/>
+              <g class="orbit"><g transform="rotate(-28 300 300)">
+                <ellipse cx="300" cy="300" rx="263" ry="143" stroke="url(#orbit-line)" stroke-width="1.3"/>
+                <ellipse class="trail" cx="300" cy="300" rx="263" ry="143" stroke="#f8873b" stroke-width="2" stroke-dasharray="32 1100" stroke-linecap="round"/>
+                <circle cx="563" cy="300" r="27" fill="url(#node-glow)"/><circle cx="563" cy="300" r="6" fill="#f98232"/><circle cx="37" cy="300" r="3.5" fill="#edb589"/>
+              </g></g>
+              <g class="orbit reverse"><g transform="rotate(42 300 300)">
+                <ellipse cx="300" cy="300" rx="252" ry="161" stroke="url(#orbit-line)"/>
+                <circle cx="552" cy="300" r="4.5" fill="#f59553"/><circle cx="48" cy="300" r="22" fill="url(#node-glow)"/><circle cx="48" cy="300" r="5" fill="#ed8039"/>
+              </g></g>
+              <g class="orbit slow"><g transform="rotate(105 300 300)">
+                <ellipse cx="300" cy="300" rx="231" ry="184" stroke="url(#orbit-line)" stroke-opacity=".7"/>
+                <circle cx="531" cy="300" r="3" fill="#eba16d"/><circle cx="69" cy="300" r="4" fill="#f79a55"/>
+              </g></g>
+            </svg>
+            <div class="brand-core"><img class="logo" src="./logo.jpg" width="460" height="460" alt="RecGPT logo"></div>
+          </div>
+          <button class="motion-toggle" type="button" aria-label="Pause animation" aria-pressed="false">
+            <svg class="pause" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3" y="2" width="3" height="12" rx="1"/><rect x="10" y="2" width="3" height="12" rx="1"/></svg>
+            <svg class="play" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2L14 8L4 14Z"/></svg>
+          </button>
+        </div>
         <div class="wordmark">
           <h1>RecGPT Team</h1>
           <a class="project-link" href="https://recgpt-team.github.io/UserArena-Page/">UserArena Page <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </main>
+    <script>
+      const scene = document.querySelector('.brand-scene');
+      const toggle = scene.querySelector('.motion-toggle');
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      toggle.addEventListener('click', () => {
+        const paused = scene.dataset.paused !== 'true';
+        scene.dataset.paused = String(paused);
+        toggle.setAttribute('aria-pressed', String(paused));
+        toggle.setAttribute('aria-label', paused ? 'Play animation' : 'Pause animation');
+      });
+      scene.addEventListener('pointermove', event => {
+        if (reducedMotion.matches || scene.dataset.paused === 'true' || event.pointerType === 'touch') return;
+        const rect = scene.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        scene.style.setProperty('--x', `${x * 10}px`);
+        scene.style.setProperty('--y', `${y * 10}px`);
+        scene.style.setProperty('--rx', `${-y * 8}deg`);
+        scene.style.setProperty('--ry', `${x * 8}deg`);
+      });
+      scene.addEventListener('pointerleave', () => {
+        ['--x', '--y', '--rx', '--ry'].forEach(property => scene.style.removeProperty(property));
+      });
+    </script>
   </body>
 </html>
