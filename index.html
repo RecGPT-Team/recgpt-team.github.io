@@ -14,12 +14,12 @@
       main { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 64px 40px; }
       .identity { display: grid; grid-template-columns: minmax(320px, 440px) auto; align-items: center; gap: clamp(24px, 4vw, 64px); width: min(1180px, 100%); }
       .brand-scene { position: relative; width: 100%; aspect-ratio: 1; isolation: isolate; perspective: 900px; }
-      .brand-scene::before { content: ""; position: absolute; inset: 8%; border-radius: 50%; background: radial-gradient(circle, #ffca9b80, #ffe9d650 44%, transparent 70%); filter: blur(18px); animation: breathe 9s ease-in-out infinite; }
+      .brand-scene::before { content: ""; position: absolute; inset: 8%; border-radius: 50%; background: radial-gradient(circle, #ffca9b65, #ffe9d638 44%, transparent 70%); filter: blur(18px); animation: breathe 11s ease-in-out infinite; }
       .scene-content { position: absolute; inset: 0; transform: translate3d(var(--x, 0px), var(--y, 0px), 0) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform 700ms cubic-bezier(.2,.7,.2,1); }
       .orbits { display: block; width: 100%; height: 100%; overflow: visible; }
-      .orbit { transform-origin: 300px 300px; animation: orbit 38s linear infinite; }
-      .orbit.reverse { animation-direction: reverse; animation-duration: 52s; }
-      .orbit.slow { animation-duration: 70s; }
+      .orbit { transform-origin: 300px 300px; animation: orbit 48s linear infinite; }
+      .orbit.reverse { opacity: .5; animation-direction: reverse; animation-duration: 64s; }
+      .orbit.slow { opacity: .24; animation-duration: 92s; }
       .trail { animation: trail 15s linear infinite; }
       .brand-core { position: absolute; inset: 25%; display: grid; place-items: center; border: 1px solid #f1d9c5; border-radius: 50%; background: #fdf8f4; box-shadow: 0 20px 55px #ad5a2020, 0 3px 9px #a7561410, inset 0 0 0 7px #fffaf6; animation: float 7s ease-in-out infinite; }
       .logo { display: block; width: 90%; height: auto; border-radius: 50%; }
@@ -31,23 +31,26 @@
       .brand-scene[data-paused="true"] *, .brand-scene[data-paused="true"]::before { animation-play-state: paused; }
       .brand-scene[data-paused="true"] .scene-content { transform: none; }
       .wordmark { padding-bottom: 4px; }
-      h1 { margin: 0; font-size: clamp(56px, 6.5vw, 88px); font-weight: 650; line-height: 1.05; letter-spacing: -0.055em; white-space: nowrap; }
-      .work { width: min(420px, 100%); margin-top: 40px; border: 1px solid #ead5c4; border-radius: 24px; background: #fffaf680; box-shadow: 0 4px 20px #9e542008; text-align: left; transition: border-color 300ms ease, box-shadow 400ms ease, background 300ms ease; }
-      .work:hover, .work[data-open="true"] { border-color: #efb78c; background: #fffaf6; box-shadow: 0 12px 40px #b9671e12; }
+      h1 { margin: 0; font-size: clamp(56px, 6.5vw, 88px); font-weight: 600; line-height: 1.05; letter-spacing: -0.035em; white-space: nowrap; }
+      .team { color: #766d65; font-weight: 450; }
+      .work-slot { min-height: 166px; margin-top: 36px; }
+      .work { width: min(420px, 100%); border: 1px solid #eaded3; border-radius: 20px; background: #fffaf680; backdrop-filter: blur(12px); box-shadow: 0 6px 24px #9e542006; text-align: left; transition: border-color 300ms ease, box-shadow 400ms ease, background 300ms ease; }
+      .work:hover, .work[data-open="true"] { border-color: #e8c9af; background: #fffaf6b8; box-shadow: 0 12px 36px #b9671e0c; }
       .work h2 { margin: 0; font-size: 18px; font-weight: 500; line-height: 26px; }
-      .work-toggle { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; padding: 20px 22px; border: 0; border-radius: 24px; background: transparent; color: #6d4b34; font: inherit; text-align: left; cursor: pointer; }
-      .work-chevron { display: grid; place-items: center; flex: 0 0 34px; height: 34px; border-radius: 50%; background: #ff7a24; color: #2d2c2a; transition: transform 450ms cubic-bezier(.2,.8,.2,1); }
+      .work-toggle { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; padding: 20px 22px; border: 0; border-radius: 20px; background: transparent; color: #6d4b34; font: inherit; text-align: left; cursor: pointer; }
+      .work-chevron { display: grid; place-items: center; flex: 0 0 34px; height: 34px; border-radius: 50%; background: #fff0e4; color: #a74f15; transition: transform 450ms cubic-bezier(.2,.8,.2,1), background 250ms ease; }
       .work-chevron svg { width: 16px; height: 16px; }
       .work[data-open="true"] .work-chevron { transform: rotate(180deg); }
+      .work-toggle:hover .work-chevron { background: #ffe2cc; }
       .work-panel { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 450ms cubic-bezier(.2,.8,.2,1), opacity 300ms ease; }
       .work-panel-inner { overflow: hidden; min-height: 0; }
       .work[data-open="true"] .work-panel { grid-template-rows: 1fr; opacity: 1; }
-      .project-link { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; margin: 0 12px 12px; padding: 18px 20px; border: 1px solid #f0dfd1; border-radius: 16px; background: #fff; color: #2d2c2a; font-size: 20px; font-weight: 600; line-height: 28px; text-decoration: none; transform: translateY(-8px); transition: transform 450ms cubic-bezier(.2,.8,.2,1), background 200ms ease, border-color 200ms ease; }
+      .project-link { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; margin: 0 22px; padding: 20px 0; border-top: 1px solid #eddfd3; color: #2d2c2a; font-size: 20px; font-weight: 550; line-height: 28px; text-decoration: none; transform: translateY(-8px); transition: transform 450ms cubic-bezier(.2,.8,.2,1), color 200ms ease, background 200ms ease; }
       .work[data-open="true"] .project-link { transform: translateY(0); }
       .project-name { display: inline-flex; align-items: center; gap: 12px; }
-      .project-name::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #ff7a24; box-shadow: 0 0 0 5px #fff0e5; }
+      .project-name::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #f58235; box-shadow: 0 0 0 3px #fff0e5; }
       .project-arrow { font-size: 25px; font-weight: 400; color: #b7652b; transition: transform 200ms ease; }
-      .project-link:hover { background: #fff4ea; border-color: #f0b98f; }
+      .project-link:hover { color: #a7501b; background: radial-gradient(ellipse at left, #ffe5d34d, transparent 75%); }
       .project-link:hover .project-arrow { transform: translateX(4px); }
       .work-toggle:focus-visible, .project-link:focus-visible, .motion-toggle:focus-visible { outline: 3px solid #2d2c2a; outline-offset: 4px; }
       @keyframes orbit { to { transform: rotate(360deg); } }
@@ -59,7 +62,8 @@
         .identity { grid-template-columns: 1fr; justify-items: center; gap: 24px; text-align: center; }
         .brand-scene { width: min(340px, 100%); }
         h1 { font-size: clamp(40px, 8.5vw, 64px); }
-        .work { margin: 28px auto 0; }
+        .work-slot { margin-top: 28px; }
+        .work { margin-inline: auto; }
       }
       @media (prefers-reduced-motion: reduce) {
         *, *::before { animation: none !important; transition: none !important; }
@@ -75,23 +79,23 @@
           <div class="scene-content">
             <svg class="orbits" viewBox="0 0 600 600" fill="none" aria-hidden="true">
               <defs>
-                <linearGradient id="orbit-line" x1="40" y1="100" x2="550" y2="490" gradientUnits="userSpaceOnUse"><stop stop-color="#f67b2b" stop-opacity=".08"/><stop offset=".5" stop-color="#ee7d36" stop-opacity=".65"/><stop offset="1" stop-color="#f67b2b" stop-opacity=".08"/></linearGradient>
+                <linearGradient id="orbit-line" x1="40" y1="100" x2="550" y2="490" gradientUnits="userSpaceOnUse"><stop stop-color="#f67b2b" stop-opacity=".1"/><stop offset=".5" stop-color="#ee7d36" stop-opacity=".8"/><stop offset="1" stop-color="#f67b2b" stop-opacity=".1"/></linearGradient>
                 <radialGradient id="node-glow"><stop stop-color="#ffb574" stop-opacity=".8"/><stop offset="1" stop-color="#ff9c49" stop-opacity="0"/></radialGradient>
               </defs>
-              <circle cx="300" cy="300" r="245" stroke="#e7c6ad" stroke-opacity=".35" stroke-dasharray="2 10"/>
-              <circle cx="300" cy="300" r="207" stroke="#edceba" stroke-opacity=".28"/>
+              <circle cx="300" cy="300" r="245" stroke="#e7c6ad" stroke-opacity=".18" stroke-dasharray="2 10"/>
+              <circle cx="300" cy="300" r="207" stroke="#edceba" stroke-opacity=".16"/>
               <g class="orbit"><g transform="rotate(-28 300 300)">
-                <ellipse cx="300" cy="300" rx="263" ry="143" stroke="url(#orbit-line)" stroke-width="1.3"/>
-                <ellipse class="trail" cx="300" cy="300" rx="263" ry="143" stroke="#f8873b" stroke-width="2" stroke-dasharray="32 1100" stroke-linecap="round"/>
-                <circle cx="563" cy="300" r="27" fill="url(#node-glow)"/><circle cx="563" cy="300" r="6" fill="#f98232"/><circle cx="37" cy="300" r="3.5" fill="#edb589"/>
+                <ellipse cx="300" cy="300" rx="263" ry="143" stroke="url(#orbit-line)" stroke-width="1.4"/>
+                <ellipse class="trail" cx="300" cy="300" rx="263" ry="143" stroke="#f8873b" stroke-opacity=".75" stroke-width="1.6" stroke-dasharray="32 1100" stroke-linecap="round"/>
+                <circle cx="563" cy="300" r="24" fill="url(#node-glow)"/><circle cx="563" cy="300" r="6" fill="#f98232"/><circle cx="37" cy="300" r="3" fill="#edb589"/>
               </g></g>
               <g class="orbit reverse"><g transform="rotate(42 300 300)">
                 <ellipse cx="300" cy="300" rx="252" ry="161" stroke="url(#orbit-line)"/>
-                <circle cx="552" cy="300" r="4.5" fill="#f59553"/><circle cx="48" cy="300" r="22" fill="url(#node-glow)"/><circle cx="48" cy="300" r="5" fill="#ed8039"/>
+                <circle cx="552" cy="300" r="3.5" fill="#f59553"/><circle cx="48" cy="300" r="16" fill="url(#node-glow)"/><circle cx="48" cy="300" r="4" fill="#ed8039"/>
               </g></g>
               <g class="orbit slow"><g transform="rotate(105 300 300)">
                 <ellipse cx="300" cy="300" rx="231" ry="184" stroke="url(#orbit-line)" stroke-opacity=".7"/>
-                <circle cx="531" cy="300" r="3" fill="#eba16d"/><circle cx="69" cy="300" r="4" fill="#f79a55"/>
+                <circle cx="531" cy="300" r="2" fill="#eba16d"/><circle cx="69" cy="300" r="2.8" fill="#f79a55"/>
               </g></g>
             </svg>
             <div class="brand-core"><img class="logo" src="./logo.jpg" width="460" height="460" alt="RecGPT logo"></div>
@@ -102,7 +106,8 @@
           </button>
         </div>
         <div class="wordmark">
-          <h1>RecGPT Team</h1>
+          <h1>RecGPT <span class="team">Team</span></h1>
+          <div class="work-slot">
           <section class="work" aria-labelledby="work-heading">
             <h2 id="work-heading">
               <button class="work-toggle" type="button" aria-expanded="false" aria-controls="work-panel">
@@ -116,6 +121,7 @@
               </div>
             </div>
           </section>
+          </div>
         </div>
       </div>
     </main>
