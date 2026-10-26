@@ -32,12 +32,24 @@
       .brand-scene[data-paused="true"] .scene-content { transform: none; }
       .wordmark { padding-bottom: 4px; }
       h1 { margin: 0; font-size: clamp(56px, 6.5vw, 88px); font-weight: 650; line-height: 1.05; letter-spacing: -0.055em; white-space: nowrap; }
-      .work { margin-top: 40px; padding-top: 24px; border-top: 1px solid #e9d7c9; }
-      .work h2 { margin: 0; color: #906444; font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: .02em; }
-      .project-link { display: inline-flex; align-items: center; justify-content: center; gap: 36px; min-height: 60px; margin-top: 16px; padding: 17px 28px; border-radius: 999px; background: #ff7a24; color: #2d2c2a; font-size: 18px; font-weight: 600; line-height: 26px; text-decoration: none; transition: background 160ms ease; }
-      .project-link span { font-size: 24px; font-weight: 400; }
-      .project-link:hover { background: #f36d18; }
-      .project-link:focus-visible, .motion-toggle:focus-visible { outline: 3px solid #2d2c2a; outline-offset: 5px; }
+      .work { width: min(420px, 100%); margin-top: 40px; border: 1px solid #ead5c4; border-radius: 24px; background: #fffaf680; box-shadow: 0 4px 20px #9e542008; text-align: left; transition: border-color 300ms ease, box-shadow 400ms ease, background 300ms ease; }
+      .work:hover, .work[data-open="true"] { border-color: #efb78c; background: #fffaf6; box-shadow: 0 12px 40px #b9671e12; }
+      .work h2 { margin: 0; font-size: 18px; font-weight: 500; line-height: 26px; }
+      .work-toggle { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; padding: 20px 22px; border: 0; border-radius: 24px; background: transparent; color: #6d4b34; font: inherit; text-align: left; cursor: pointer; }
+      .work-chevron { display: grid; place-items: center; flex: 0 0 34px; height: 34px; border-radius: 50%; background: #ff7a24; color: #2d2c2a; transition: transform 450ms cubic-bezier(.2,.8,.2,1); }
+      .work-chevron svg { width: 16px; height: 16px; }
+      .work[data-open="true"] .work-chevron { transform: rotate(180deg); }
+      .work-panel { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 450ms cubic-bezier(.2,.8,.2,1), opacity 300ms ease; }
+      .work-panel-inner { overflow: hidden; min-height: 0; }
+      .work[data-open="true"] .work-panel { grid-template-rows: 1fr; opacity: 1; }
+      .project-link { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; margin: 0 12px 12px; padding: 18px 20px; border: 1px solid #f0dfd1; border-radius: 16px; background: #fff; color: #2d2c2a; font-size: 20px; font-weight: 600; line-height: 28px; text-decoration: none; transform: translateY(-8px); transition: transform 450ms cubic-bezier(.2,.8,.2,1), background 200ms ease, border-color 200ms ease; }
+      .work[data-open="true"] .project-link { transform: translateY(0); }
+      .project-name { display: inline-flex; align-items: center; gap: 12px; }
+      .project-name::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #ff7a24; box-shadow: 0 0 0 5px #fff0e5; }
+      .project-arrow { font-size: 25px; font-weight: 400; color: #b7652b; transition: transform 200ms ease; }
+      .project-link:hover { background: #fff4ea; border-color: #f0b98f; }
+      .project-link:hover .project-arrow { transform: translateX(4px); }
+      .work-toggle:focus-visible, .project-link:focus-visible, .motion-toggle:focus-visible { outline: 3px solid #2d2c2a; outline-offset: 4px; }
       @keyframes orbit { to { transform: rotate(360deg); } }
       @keyframes trail { to { stroke-dashoffset: -200; } }
       @keyframes float { 50% { translate: 0 -5px; } }
@@ -47,7 +59,7 @@
         .identity { grid-template-columns: 1fr; justify-items: center; gap: 24px; text-align: center; }
         .brand-scene { width: min(340px, 100%); }
         h1 { font-size: clamp(40px, 8.5vw, 64px); }
-        .work { margin-top: 28px; }
+        .work { margin: 28px auto 0; }
       }
       @media (prefers-reduced-motion: reduce) {
         *, *::before { animation: none !important; transition: none !important; }
@@ -92,8 +104,17 @@
         <div class="wordmark">
           <h1>RecGPT Team</h1>
           <section class="work" aria-labelledby="work-heading">
-            <h2 id="work-heading">Explore our work</h2>
-            <a class="project-link" href="https://recgpt-team.github.io/UserArena-Page/">UserArena <span aria-hidden="true">→</span></a>
+            <h2 id="work-heading">
+              <button class="work-toggle" type="button" aria-expanded="false" aria-controls="work-panel">
+                Explore our work
+                <span class="work-chevron" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </button>
+            </h2>
+            <div class="work-panel" id="work-panel" inert aria-hidden="true">
+              <div class="work-panel-inner">
+                <a class="project-link" href="https://recgpt-team.github.io/UserArena-Page/"><span class="project-name">UserArena</span><span class="project-arrow" aria-hidden="true">↗</span></a>
+              </div>
+            </div>
           </section>
         </div>
       </div>
@@ -102,6 +123,16 @@
       const scene = document.querySelector('.brand-scene');
       const toggle = scene.querySelector('.motion-toggle');
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const work = document.querySelector('.work');
+      const workToggle = work.querySelector('.work-toggle');
+      const workPanel = work.querySelector('.work-panel');
+      workToggle.addEventListener('click', () => {
+        const open = workToggle.getAttribute('aria-expanded') !== 'true';
+        work.dataset.open = String(open);
+        workToggle.setAttribute('aria-expanded', String(open));
+        workPanel.inert = !open;
+        workPanel.setAttribute('aria-hidden', String(!open));
+      });
       toggle.addEventListener('click', () => {
         const paused = scene.dataset.paused !== 'true';
         scene.dataset.paused = String(paused);
