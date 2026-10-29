@@ -24,7 +24,6 @@ body { overflow-wrap: break-word; }
 .report-card:hover { transform: translateY(-4px); border-color: #dbad89; box-shadow: 0 15px 35px #a2622510; }
 .report-card:hover::after { transform: scale(1.16) translate(-8px, -8px); }
 .report-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 24px; color: #96633e; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
-.report-meta .accepted { font-size: 9px; letter-spacing: .06em; color: #846047; padding: 4px 7px; border: 1px solid #dec1a9; border-radius: 5px; }
 .report-card h4 { position: relative; z-index: 1; margin: 27px 0 4px; font-size: 29px; line-height: 1.15; font-weight: 650; letter-spacing: -.035em; }
 .report-card p { margin: 0; font-size: 13px; color: #94745c; }
 .report-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 28px; color: #9a5d33; font-size: 11px; }
@@ -68,7 +67,6 @@ body { overflow-wrap: break-word; }
   .report-card { padding: 22px; min-height: 218px; }
   .report-card h4 { font-size: 25px; }
   .report-meta { font-size: 9px; letter-spacing: .055em; }
-  .report-meta .accepted { font-size: 8px; }
   .paper h4 { font-size: 19px; }
 }
 @media (max-width: 640px) {
