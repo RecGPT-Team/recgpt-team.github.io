@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#fdf8f4">
-    <meta name="description" content="RecGPT Team">
+    <meta name="description" content="Research from RecGPT Team: technical reports, publications and preprints on recommendation, reasoning and user simulation.">
     <title>RecGPT Team</title>
     <link rel="icon" type="image/jpeg" href="./logo.jpg">
     <link rel="preload" href="./assets/fonts/Montserrat-ExtraBold.ttf" as="font" type="font/ttf" crossorigin>
@@ -13,7 +13,7 @@
       :root { color-scheme: light; background: #fdf8f4; color: #2d2c2a; }
       * { box-sizing: border-box; }
       body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-      main { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 64px 40px; }
+      .hero { min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 64px 40px; }
       .identity { display: grid; grid-template-columns: minmax(320px, 440px) auto; align-items: center; gap: clamp(24px, 4vw, 64px); width: min(1180px, 100%); }
       .brand-scene { position: relative; width: 100%; aspect-ratio: 1; isolation: isolate; perspective: 900px; }
       .brand-scene::before { content: ""; position: absolute; inset: 8%; border-radius: 50%; background: radial-gradient(circle, #ffca9b65, #ffe9d638 44%, transparent 70%); filter: blur(18px); animation: breathe 11s ease-in-out infinite; }
@@ -59,7 +59,7 @@
       @keyframes float { 50% { translate: 0 -5px; } }
       @keyframes breathe { 50% { opacity: .55; scale: 1.08; } }
       @media (max-width: 960px) {
-        main { padding: 40px 24px; }
+        .hero { padding: 40px 24px; }
         .identity { grid-template-columns: 1fr; justify-items: center; gap: 24px; text-align: center; }
         .brand-scene { width: min(340px, 100%); }
         h1 { font-size: clamp(32px, 10vw, 58px); }
@@ -72,9 +72,10 @@
         .motion-toggle { display: none; }
       }
     </style>
+    <link rel="stylesheet" href="./assets/research.css">
   </head>
   <body>
-    <main>
+    <header class="hero" id="top">
       <div class="identity">
         <div class="brand-scene">
           <div class="scene-content">
@@ -119,12 +120,52 @@
             <div class="work-panel" id="work-panel" inert aria-hidden="true">
               <div class="work-panel-inner">
                 <a class="project-link" href="https://recgpt-team.github.io/UserArena-Page/"><span class="project-name">UserArena</span><span class="project-arrow" aria-hidden="true">↗</span></a>
+                <a class="project-link" href="#research"><span class="project-name research-name">Research &amp; publications</span><span class="project-arrow" aria-hidden="true">↓</span></a>
               </div>
             </div>
           </section>
           </div>
         </div>
       </div>
+      <a class="scroll-cue" href="#research">Discover our research</a>
+    </header>
+    <main class="research" id="research" aria-labelledby="research-heading">
+      <div class="research-intro reveal">
+        <p class="eyebrow">Our research</p>
+        <h2 id="research-heading">Research &amp; publications.</h2>
+        <p>Systems, methods and benchmarks for recommendation.<br>Explore our technical reports and latest research.</p>
+        <nav class="research-nav" aria-label="Research sections">
+          <a href="#technical-reports">Technical reports <span>04</span></a>
+          <a href="#publications">Publications <span>05</span></a>
+          <a href="#preprints">Preprints <span>04</span></a>
+        </nav>
+      </div>
+      <section class="research-group" id="technical-reports" aria-label="Technical reports">
+<div class="group-heading"><span class="group-index">01</span><h3>Technical reports</h3><p>The RecGPT series and DREAM.</p></div>
+<div class="report-grid">
+<a class="report-card reveal" href="https://arxiv.org/abs/2507.22879" target="_blank" rel="noopener noreferrer" aria-label="RecGPT v1: Technical Report"><div class="report-meta"><span>Technical report · 2025</span><span class="accepted">Accepted</span></div><h4>RecGPT v1</h4><p>Technical Report</p><div class="report-bottom"><span>arXiv 2507.22879</span><span class="link-arrow" aria-hidden="true">↗</span></div></a>
+<a class="report-card reveal" href="https://arxiv.org/abs/2512.14503" target="_blank" rel="noopener noreferrer" aria-label="RecGPT v2: Technical Report"><div class="report-meta"><span>Technical report · 2025</span></div><h4>RecGPT v2</h4><p>Technical Report</p><div class="report-bottom"><span>arXiv 2512.14503</span><span class="link-arrow" aria-hidden="true">↗</span></div></a>
+<a class="report-card reveal" href="https://arxiv.org/abs/2607.15591" target="_blank" rel="noopener noreferrer" aria-label="RecGPT v3: Technical Report"><div class="report-meta"><span>Technical report · 2026</span></div><h4>RecGPT v3</h4><p>Technical Report</p><div class="report-bottom"><span>arXiv 2607.15591</span><span class="link-arrow" aria-hidden="true">↗</span></div></a>
+<a class="report-card reveal" href="https://arxiv.org/abs/2608.09408" target="_blank" rel="noopener noreferrer" aria-label="DREAM: Technical Report"><div class="report-meta"><span>Technical report · 2026</span></div><h4>DREAM</h4><p>Technical Report</p><div class="report-bottom"><span>arXiv 2608.09408</span><span class="link-arrow" aria-hidden="true">↗</span></div></a>
+</div></section>
+      <section class="research-group" id="publications" aria-label="Accepted publications">
+<div class="group-heading"><span class="group-index">02</span><h3>Publications</h3><p>Accepted journal and conference papers.</p></div>
+<div class="paper-list">
+<article class="paper reveal"><div class="paper-meta"><span class="venue">TOIS</span><span class="paper-year">2026</span></div><h4><a class="paper-title" href="https://dl.acm.org/doi/10.1145/3846382" target="_blank" rel="noopener noreferrer"><span>RecGPT: A User Intent-Centric Next-Generation LLM-Powered Recommender System in Industrial Practice</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Jiakai Tang, Wen Chen, et al.</span></summary><p>Jiakai Tang, Wen Chen, Dian Chen, Chao Yi, Gaoyang Guo, Wenjun Yang, Jing Yu, Zhujin Gao, Mao Zhang, Sunhao Dai, Xu Chen, Jian Wu, Yuning Jiang, Bo Zheng</p></details></article>
+<article class="paper reveal"><div class="paper-meta"><span class="venue">TKDE</span><span class="paper-year">2026</span></div><h4><a class="paper-title" href="https://ieeexplore.ieee.org/document/11523596" target="_blank" rel="noopener noreferrer"><span>Think Before Recommend: Unleashing the Latent Reasoning Power for Sequential Recommendation</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Jiakai Tang, Sunhao Dai, et al.</span></summary><p>Jiakai Tang, Sunhao Dai, Teng Shi, Jun Xu, Xu Chen, Wen Chen, Jian Wu, Yuning Jiang</p></details></article>
+<article class="paper reveal"><div class="paper-meta"><span class="venue">KDD</span><span class="paper-year">2026</span></div><h4><a class="paper-title" href="https://arxiv.org/abs/2509.21317" target="_blank" rel="noopener noreferrer"><span>Interactive Recommendation Agent with Active User Commands</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Jiakai Tang, Yujie Luo, et al.</span></summary><p>Jiakai Tang, Yujie Luo, Xunke Xi, Fei Sun, Xueyang Feng, Sunhao Dai, Chao Yi, Dian Chen, Zhujin Gao, Yang Li, Xu Chen, Wen Chen, Jian Wu, Yuning Jiang, Bo Zheng</p></details></article>
+<article class="paper reveal"><div class="paper-meta"><span class="venue">KDD</span><span class="paper-year">2025</span></div><h4><a class="paper-title" href="https://dl.acm.org/doi/10.1145/3711896.3737199" target="_blank" rel="noopener noreferrer"><span>Bursting Filter Bubble: Enhancing Serendipity Recommendations with Aligned Large Language Models</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Yunjia Xi, Muyan Weng, et al.</span></summary><p>Yunjia Xi, Muyan Weng, Wen Chen, Chao Yi, Dian Chen, Gaoyang Guo, Mao Zhang, Jian Wu, Yuning Jiang, Qingwen Liu, Yong Yu, Weinan Zhang</p></details></article>
+<article class="paper reveal"><div class="paper-meta"><span class="venue">NeurIPS</span><span class="paper-year">2026</span></div><h4>RecMem: Recurrent Memory Compression for Long-Sequence Generative Recommendation</h4><p class="forthcoming">arXiv link forthcoming</p></article>
+</div></section>
+      <section class="research-group" id="preprints" aria-label="Preprints">
+<div class="group-heading"><span class="group-index">03</span><h3>Preprints</h3><p>Recent work available on arXiv.</p></div>
+<div class="paper-list">
+<article class="paper reveal"><div class="paper-meta"><span class="venue">arXiv</span><span class="paper-year">2026</span><span class="submission">WWW 2027 submission</span></div><h4><a class="paper-title" href="https://arxiv.org/abs/2608.20707" target="_blank" rel="noopener noreferrer"><span>Towards Faithful Simulation of Human Shopping Behavior</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Jiakai Tang, Yan Mi, et al.</span></summary><p>Jiakai Tang, Yan Mi, Jing Yu, Yang Zhang, See-Kiong Ng, Qi Cao, Fei Sun, Xu Chen, Wen Chen, Jian Wu, Han Zhu, Bo Zheng</p></details></article>
+<article class="paper reveal"><div class="paper-meta"><span class="venue">arXiv</span><span class="paper-year">2026</span><span class="submission">KDD 2027 submission</span></div><h4><a class="paper-title" href="https://arxiv.org/abs/2607.27055" target="_blank" rel="noopener noreferrer"><span>Learning from the Future: Privileged Self-Distillation for Sequential Recommendation</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Jiakai Tang, Yang Zhang, et al.</span></summary><p>Jiakai Tang, Yang Zhang, See-Kiong Ng, Xu Chen, Wen Chen, Jian Wu, Han Zhu</p></details></article>
+<article class="paper reveal"><div class="paper-meta"><span class="venue">arXiv</span><span class="paper-year">2026</span><span class="submission">KDD 2027 submission</span></div><h4><a class="paper-title" href="https://arxiv.org/abs/2601.03153" target="_blank" rel="noopener noreferrer"><span>Parallel Latent Reasoning for Sequential Recommendation</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Jiakai Tang, Xu Chen, et al.</span></summary><p>Jiakai Tang, Xu Chen, Wen Chen, Jian Wu, Yuning Jiang, Bo Zheng</p></details></article>
+<article class="paper reveal"><div class="paper-meta"><span class="venue">arXiv</span><span class="paper-year">2026</span></div><h4><a class="paper-title" href="https://arxiv.org/abs/2610.30932" target="_blank" rel="noopener noreferrer"><span>UserArena: Benchmarking Interactive User Simulation for Long-Horizon Shopping Agents</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Jujia Zhao, Jiakai Tang, et al.</span></summary><p>Jujia Zhao, Jiakai Tang, Jing Yu, Wen Chen, Jian Wu, Han Zhu, Fei Sun, Suzan Verberne, Zhaochun Ren</p></details></article>
+</div></section>
+      <footer class="research-footer"><span>RecGPT Team</span><a href="#top">Back to top ↑</a></footer>
     </main>
     <script>
       const scene = document.querySelector('.brand-scene');
@@ -159,6 +200,19 @@
       scene.addEventListener('pointerleave', () => {
         ['--x', '--y', '--rx', '--ry'].forEach(property => scene.style.removeProperty(property));
       });
+      if ('IntersectionObserver' in window && !reducedMotion.matches) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.dataset.reveal = 'visible';
+            observer.unobserve(entry.target);
+          });
+        }, { threshold: 0.08 });
+        document.querySelectorAll('.reveal').forEach(element => {
+          element.dataset.reveal = 'pending';
+          observer.observe(element);
+        });
+      }
     </script>
   </body>
 </html>
