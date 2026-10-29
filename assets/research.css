@@ -48,7 +48,6 @@ body { overflow-wrap: break-word; }
 .forthcoming::before { content: ""; width: 5px; height: 5px; border: 1px solid #b58b6b; border-radius: 50%; }
 .paper-resource { display: inline-flex; align-items: center; gap: 16px; margin-top: 16px; padding: 8px 12px; border: 1px solid #e7cdb9; border-radius: 7px; color: #975e33; background: #fff6ed; font-size: 11px; text-decoration: none; transition: background 200ms ease, border-color 200ms ease; }
 .paper-resource:hover { background: #ffe8d6; border-color: #d9ae8d; }
-.submission { margin-left: auto; color: #a18b78; font-size: 10px; text-align: right; }
 .research-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 72px; padding-top: 24px; border-top: 1px solid #e4d4c6; color: #9e8a78; font-size: 12px; }
 .research-footer a { color: #926444; text-decoration: none; }
 .research-footer a:hover { color: #b55a20; }
@@ -91,7 +90,6 @@ body { overflow-wrap: break-word; }
   .paper-title { gap: 15px; }
   .paper h4 { font-size: 18px; line-height: 1.5; }
   .paper-meta { gap: 8px; }
-  .submission { max-width: 150px; font-size: 9px; }
   .research-footer { margin-top: 48px; }
 }
 @media (max-width: 359px) {
