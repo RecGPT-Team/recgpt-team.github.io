@@ -2,7 +2,7 @@
 
 The organization homepage at https://recgpt-team.github.io/.
 
-A buildless static site preserving the original RecGPT logo, warm orange and cream palette, animated orbital hero, and Explore our work disclosure. The disclosure links to UserArena and the research index.
+A buildless static site preserving the original RecGPT logo, warm orange and cream palette, animated orbital hero, and Explore our work link, which scrolls directly to the research index. The UserArena project link sits alongside its paper in the preprints section.
 
 Research is grouped into four technical reports, five accepted publications, and four preprints. All entries are static HTML in `index.html`; research styles are in `assets/research.css`. Full author lists use native accessible disclosures. RecMem has no paper link until its arXiv URL is supplied. Venue and acceptance metadata follow the team-provided publication list; submission targets are labeled as submissions, not acceptances.
 

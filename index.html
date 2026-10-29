@@ -36,24 +36,13 @@
       h1 { margin: 0; font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; font-size: clamp(52px, 5.8vw, 80px); font-weight: 800; line-height: 1.12; letter-spacing: .005em; word-spacing: .14em; white-space: nowrap; }
       .work-slot { min-height: 166px; margin-top: 36px; }
       .work { width: min(420px, 100%); border: 1px solid #eaded3; border-radius: 20px; background: #fffaf680; backdrop-filter: blur(12px); box-shadow: 0 6px 24px #9e542006; text-align: left; transition: border-color 300ms ease, box-shadow 400ms ease, background 300ms ease; }
-      .work:hover, .work[data-open="true"] { border-color: #e8c9af; background: #fffaf6b8; box-shadow: 0 12px 36px #b9671e0c; }
+      .work:hover { border-color: #e8c9af; background: #fffaf6b8; box-shadow: 0 12px 36px #b9671e0c; }
       .work h2 { margin: 0; font-size: 18px; font-weight: 500; line-height: 26px; }
       .work-toggle { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; padding: 20px 22px; border: 0; border-radius: 20px; background: transparent; color: #6d4b34; font: inherit; text-align: left; cursor: pointer; }
       .work-chevron { display: grid; place-items: center; flex: 0 0 34px; height: 34px; border-radius: 50%; background: #fff0e4; color: #a74f15; transition: transform 450ms cubic-bezier(.2,.8,.2,1), background 250ms ease; }
       .work-chevron svg { width: 16px; height: 16px; }
-      .work[data-open="true"] .work-chevron { transform: rotate(180deg); }
       .work-toggle:hover .work-chevron { background: #ffe2cc; }
-      .work-panel { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 450ms cubic-bezier(.2,.8,.2,1), opacity 300ms ease; }
-      .work-panel-inner { overflow: hidden; min-height: 0; }
-      .work[data-open="true"] .work-panel { grid-template-rows: 1fr; opacity: 1; }
-      .project-link { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; margin: 0 22px; padding: 20px 0; border-top: 1px solid #eddfd3; color: #2d2c2a; font-size: 20px; font-weight: 550; line-height: 28px; text-decoration: none; transform: translateY(-8px); transition: transform 450ms cubic-bezier(.2,.8,.2,1), color 200ms ease, background 200ms ease; }
-      .work[data-open="true"] .project-link { transform: translateY(0); }
-      .project-name { display: inline-flex; align-items: center; gap: 12px; }
-      .project-name::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #f58235; box-shadow: 0 0 0 3px #fff0e5; }
-      .project-arrow { font-size: 25px; font-weight: 400; color: #b7652b; transition: transform 200ms ease; }
-      .project-link:hover { color: #a7501b; background: radial-gradient(ellipse at left, #ffe5d34d, transparent 75%); }
-      .project-link:hover .project-arrow { transform: translateX(4px); }
-      .work-toggle:focus-visible, .project-link:focus-visible, .motion-toggle:focus-visible { outline: 3px solid #2d2c2a; outline-offset: 4px; }
+      .work-toggle:focus-visible, .motion-toggle:focus-visible { outline: 3px solid #2d2c2a; outline-offset: 4px; }
       @keyframes orbit { to { transform: rotate(360deg); } }
       @keyframes trail { to { stroke-dashoffset: -200; } }
       @keyframes float { 50% { translate: 0 -5px; } }
@@ -112,22 +101,15 @@
           <div class="work-slot">
           <section class="work" aria-labelledby="work-heading">
             <h2 id="work-heading">
-              <button class="work-toggle" type="button" aria-expanded="false" aria-controls="work-panel">
+              <a class="work-toggle" href="#research">
                 Explore our work
-                <span class="work-chevron" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 8L10 13L15 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              </button>
+                <span class="work-chevron" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M10 4V16M5 11L10 16L15 11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </a>
             </h2>
-            <div class="work-panel" id="work-panel" inert aria-hidden="true">
-              <div class="work-panel-inner">
-                <a class="project-link" href="https://recgpt-team.github.io/UserArena-Page/"><span class="project-name">UserArena</span><span class="project-arrow" aria-hidden="true">↗</span></a>
-                <a class="project-link" href="#research"><span class="project-name research-name">Research &amp; publications</span><span class="project-arrow" aria-hidden="true">↓</span></a>
-              </div>
-            </div>
           </section>
           </div>
         </div>
       </div>
-      <a class="scroll-cue" href="#research">Discover our research</a>
     </header>
     <main class="research" id="research" aria-labelledby="research-heading">
       <div class="research-intro reveal">
@@ -163,7 +145,7 @@
 <article class="paper reveal"><div class="paper-meta"><span class="venue">arXiv</span><span class="paper-year">2026</span><span class="submission">WWW 2027 submission</span></div><h4><a class="paper-title" href="https://arxiv.org/abs/2608.20707" target="_blank" rel="noopener noreferrer"><span>Towards Faithful Simulation of Human Shopping Behavior</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Jiakai Tang, Yan Mi, et al.</span></summary><p>Jiakai Tang, Yan Mi, Jing Yu, Yang Zhang, See-Kiong Ng, Qi Cao, Fei Sun, Xu Chen, Wen Chen, Jian Wu, Han Zhu, Bo Zheng</p></details></article>
 <article class="paper reveal"><div class="paper-meta"><span class="venue">arXiv</span><span class="paper-year">2026</span><span class="submission">KDD 2027 submission</span></div><h4><a class="paper-title" href="https://arxiv.org/abs/2607.27055" target="_blank" rel="noopener noreferrer"><span>Learning from the Future: Privileged Self-Distillation for Sequential Recommendation</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Jiakai Tang, Yang Zhang, et al.</span></summary><p>Jiakai Tang, Yang Zhang, See-Kiong Ng, Xu Chen, Wen Chen, Jian Wu, Han Zhu</p></details></article>
 <article class="paper reveal"><div class="paper-meta"><span class="venue">arXiv</span><span class="paper-year">2026</span><span class="submission">KDD 2027 submission</span></div><h4><a class="paper-title" href="https://arxiv.org/abs/2601.03153" target="_blank" rel="noopener noreferrer"><span>Parallel Latent Reasoning for Sequential Recommendation</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Jiakai Tang, Xu Chen, et al.</span></summary><p>Jiakai Tang, Xu Chen, Wen Chen, Jian Wu, Yuning Jiang, Bo Zheng</p></details></article>
-<article class="paper reveal"><div class="paper-meta"><span class="venue">arXiv</span><span class="paper-year">2026</span></div><h4><a class="paper-title" href="https://arxiv.org/abs/2610.30932" target="_blank" rel="noopener noreferrer"><span>UserArena: Benchmarking Interactive User Simulation for Long-Horizon Shopping Agents</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Jujia Zhao, Jiakai Tang, et al.</span></summary><p>Jujia Zhao, Jiakai Tang, Jing Yu, Wen Chen, Jian Wu, Han Zhu, Fei Sun, Suzan Verberne, Zhaochun Ren</p></details></article>
+<article class="paper reveal"><div class="paper-meta"><span class="venue">arXiv</span><span class="paper-year">2026</span></div><h4><a class="paper-title" href="https://arxiv.org/abs/2610.30932" target="_blank" rel="noopener noreferrer"><span>UserArena: Benchmarking Interactive User Simulation for Long-Horizon Shopping Agents</span><span class="link-arrow" aria-hidden="true">↗</span></a></h4><details class="authors"><summary><span>Jujia Zhao, Jiakai Tang, et al.</span></summary><p>Jujia Zhao, Jiakai Tang, Jing Yu, Wen Chen, Jian Wu, Han Zhu, Fei Sun, Suzan Verberne, Zhaochun Ren</p></details><a class="paper-resource" href="https://recgpt-team.github.io/UserArena-Page/" target="_blank" rel="noopener noreferrer">Explore UserArena <span aria-hidden="true">↗</span></a></article>
 </div></section>
       <footer class="research-footer"><span>RecGPT Team</span><a href="#top">Back to top ↑</a></footer>
     </main>
@@ -171,16 +153,6 @@
       const scene = document.querySelector('.brand-scene');
       const toggle = scene.querySelector('.motion-toggle');
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-      const work = document.querySelector('.work');
-      const workToggle = work.querySelector('.work-toggle');
-      const workPanel = work.querySelector('.work-panel');
-      workToggle.addEventListener('click', () => {
-        const open = workToggle.getAttribute('aria-expanded') !== 'true';
-        work.dataset.open = String(open);
-        workToggle.setAttribute('aria-expanded', String(open));
-        workPanel.inert = !open;
-        workPanel.setAttribute('aria-hidden', String(!open));
-      });
       toggle.addEventListener('click', () => {
         const paused = scene.dataset.paused !== 'true';
         scene.dataset.paused = String(paused);
